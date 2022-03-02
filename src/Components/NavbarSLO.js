@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Navbar, Nav, Col } from 'react-bootstrap';
+import { Navbar, Nav, Col, Container, Row } from 'react-bootstrap';
 import {Link } from 'react-router-dom';
 
 
@@ -9,28 +9,32 @@ const NavbarSLO = (props) => {
     let {title, toBack, goBack} = props;
 
     return <>
-        <Navbar collapseOnSelect expand="lg" className="sticky-top">
-
-        { toBack &&
-            <Col xs="auto" className="p-0">
-                <Link type="button" className="btn btn-link" to="/home" > {/*onClick={goBack}*/}
-                    <i className="fas fa-chevron-left text-light fa-2x"></i> Home
-                </Link>
-            </Col>
-        }
+        <Navbar expand="lg" className="sticky-top" bg="dark">
+        <Container fluid className='py-1'>
 
         {title === "Info" &&
             <Col xs={8} className="mr-4 p-0">
-                <Navbar.Brand><h4 className="tilte-info my-auto textNav">{title}</h4></Navbar.Brand>
+                <h4 className="tilte-info text-light my-auto">{title}</h4>
             </Col>
         }
 
-        {title === "Still Life Orchestra" &&
-            <Col xs={8} className="mr-4 p-0">
-                <Navbar.Brand><h4 className="tilte-info text-light my-auto">{title}</h4></Navbar.Brand>
-                <Link type="button" className="btn btn-link" to="/info"> Info </Link>
+        { toBack &&
+            <Col xs={{ span: 2}} className="p-0">
+                <Link type="button" className="btn bg-light p-1" to="/home" > Back </Link>
             </Col>
         }
+
+        {title === "Still Life Orchestra" && <>
+            <Col xs={8} className="pl-4 p-0">
+                <h3 className="tilte-info text-light my-auto">{title}</h3>
+            </Col>
+            <Col className='' xs={{ span: 2}}>
+                <Link type="button" className="btn bg-light p-1" to="/info"> Info </Link>
+            </Col>
+
+            </>
+        }
+        </Container>
 
         </Navbar>
     </>
