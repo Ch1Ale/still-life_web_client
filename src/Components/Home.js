@@ -6,6 +6,7 @@ import { Container, Button, Row, Col} from 'react-bootstrap';
 import NavbarSLO from './NavbarSLO'
 import MyChart from './MyChart';
 import API from "../API/API"
+import SlideShow from './SlideShow';
 
 class Home extends React.Component {
 
@@ -23,7 +24,8 @@ class Home extends React.Component {
                 <NavbarSLO title="Still Life Orchestra"/>
                 <Container>
                     <h2 className='mt-3 pb-0 mb-0'>Current moods</h2>
-                    <MyChart/>
+                    {/* <MyChart/> */}
+                    <SlideShow/>
                     <Row className='mx-4 pt-0 mt-0'>
                         <Button variant="info" size="lg" className='my-2' onClick={() => { this.sendMood(4) }} >Inverno</Button>
                         <Button variant="secondary" size="lg">Autunno</Button>
