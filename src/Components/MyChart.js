@@ -6,25 +6,23 @@ Chart.register(ArcElement);
 
 const state = {
     labels: ['January', 'February', 'March',
-             'April', 'May'],
+             'April'],
     datasets: [
       {
         label: 'Rainfall',
         backgroundColor: [
-          '#B21F00',
-          '#C9DE00',
-          '#2FDE00',
-          '#00A6B4',
-          '#6800B4'
+          '#757575', /* Autunno */
+          '#5CF0FF', /* Inverno */
+          '#FFD011', /* Estate */
+          '#2C9452' /* Primavera */
         ],
         hoverBackgroundColor: [
-        '#501800',
         '#4B5000',
         '#175000',
         '#003350',
         '#35014F'
         ],
-        data: [15, 59, 80, 81, 56]
+        data: [59, 80, 81, 56]
       }
     ]
   }
@@ -38,9 +36,8 @@ const state = {
     ],
     datasets: [{
       label: 'My First Dataset',
-      data: [11, 16, 7, 3, 14],
+      data: [16, 7, 3, 14],
       backgroundColor: [
-        'rgb(255, 99, 132)',
         'rgb(75, 192, 192)',
         'rgb(255, 205, 86)',
         'rgb(201, 203, 207)',
