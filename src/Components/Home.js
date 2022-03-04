@@ -7,6 +7,7 @@ import NavbarSLO from './NavbarSLO'
 import API from "../API/API"
 import SlideShow from './SlideShow';
 import EmoticonsSlides from './EmoticonsSlides';
+import SeasonsCircularSlider from './SeasonsCircularSlider';
 
 class Home extends React.Component {
 
@@ -30,6 +31,12 @@ class Home extends React.Component {
         })
     }
 
+    sendSeason = (value) => {
+        this.setState({season: value}, () => {
+            API.sendNewSeason(value);
+        })
+    }
+
     render(){
         return <>
         <Switch>
@@ -38,7 +45,8 @@ class Home extends React.Component {
                 <Container>
 
                     <h5 className='mt-5 mb-3 pb-0 mb-0'>Change the mood of plants</h5>
-                    <SlideShow/>
+                    {/* <SlideShow/> */}
+                    <SeasonsCircularSlider selectedSeason={this.state.season} sendSeason={this.sendSeason}/>
 
                     <h5 className='mt-5 mb-3 pb-0 mb-0'>Live your mood</h5>
                     <EmoticonsSlides selectedMood={this.state.mood} sendMood={this.sendMood}/>

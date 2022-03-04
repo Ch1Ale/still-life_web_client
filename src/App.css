@@ -36,3 +36,29 @@
     transform: rotate(360deg);
   }
 }
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  }
+
+  .avatar-big {
+    height:100px;
+    width:100px;
+  }
+  
+  .avatar-small {
+    height:50px;
+    width:50px;
+  }
+  
+  .avatar-med {
+    height:75px;
+    width:75px;
+  }
+  
+  .rounded-circle {
+  border-radius: 50%!important;
+  }

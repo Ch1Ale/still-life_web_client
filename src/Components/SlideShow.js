@@ -16,7 +16,7 @@ class SlideShow extends React.Component {
       alt="Spring picture"
     />
     <Carousel.Caption>
-      <h1>Primavera</h1>
+      <h1>Spring</h1>
       <p>Qui possiamo mettere una descr, se vogliamo. augue mollis interdum.</p>
     </Carousel.Caption>
   </Carousel.Item>
@@ -28,7 +28,7 @@ class SlideShow extends React.Component {
       alt="Summer picture"
     />
     <Carousel.Caption>
-      <h1>Estate</h1>
+      <h1>Summer</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit adipiscing elit.</p>
     </Carousel.Caption>
   </Carousel.Item>
@@ -40,7 +40,7 @@ class SlideShow extends React.Component {
       alt="Autumn picture"
     />
     <Carousel.Caption>
-      <h1>Autunno</h1>
+      <h1>Autumn</h1>
       <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
     </Carousel.Caption>
   </Carousel.Item>
@@ -52,7 +52,7 @@ class SlideShow extends React.Component {
       alt="Winter picture"
     />
     <Carousel.Caption>
-      <h1>Inverno</h1>
+      <h1>Winter</h1>
       <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
     </Carousel.Caption>
   </Carousel.Item>
