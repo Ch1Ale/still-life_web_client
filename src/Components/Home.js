@@ -87,7 +87,7 @@ class Home extends React.Component {
         res = v * 90
         res = v % 10
 
-        console.log("SCALED "+res)
+        //console.log("SCALED "+res)
         return res
     }
 

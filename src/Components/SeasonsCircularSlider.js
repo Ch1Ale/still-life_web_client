@@ -1,6 +1,6 @@
 import React from 'react';
 import CircularSlider from '@fseehawer/react-circular-slider';
-import {Card, Image} from "react-bootstrap"
+import {Card, Image, Modal} from "react-bootstrap"
 
 class SeasonCircularSlider extends React.Component {
 
@@ -10,26 +10,26 @@ class SeasonCircularSlider extends React.Component {
 
     render(){
         return <>
-        <Card className="text-white mx-auto rounded-circle" style={{ width: '20rem' }}>
+        <Card className="text-white mx-auto" style={{ width: '20rem' }}>
 
-            {this.props.selectedSeason >=0 && this.props.selectedSeason <=89 &&     //spring
+            {   //spring
                 <Card.Img as={Image} src={this.props.springImg} alt="Spring image"
-                    className='rounded'
+                    className={(this.props.selectedSeason >=0 && this.props.selectedSeason <=89) ? 'fadeIn rounded img-fluid' : 'fadeOut rounded'}
                 />
             }
-            {this.props.selectedSeason >=90 && this.props.selectedSeason <=179 &&   //summer
+            {    //summer
                 <Card.Img as={Image} src={this.props.summerImg} alt="Summer image"
-                    className='rounded '
+                    className={(this.props.selectedSeason >=90 && this.props.selectedSeason <=179) ? 'fadeIn rounded img-fluid' : 'fadeOut rounded'}
                 />
             }
-            {this.props.selectedSeason >=180 && this.props.selectedSeason <=269 &&   //autumn
+            {   //autumn
                 <Card.Img as={Image} src="https://images.unsplash.com/photo-1632177979664-c1bec4eac89f" alt="Autumn image"
-                    className='rounded-circle' style={{opacity: 1}}
+                    className={(this.props.selectedSeason >=180 && this.props.selectedSeason <=269) ? 'fadeIn rounded img-fluid' : 'fadeOut rounded' }
                 />
             }
-            {this.props.selectedSeason >=270 && this.props.selectedSeason <=359 &&   //winter
+            { //winter
                 <Card.Img as={Image} src="https://images.unsplash.com/photo-1514665840819-e04ee0e24d88" alt="Winter image"
-                    className='rounded-circle '
+                    className={(this.props.selectedSeason >=270 && this.props.selectedSeason <=359) ? 'fadeIn rounded img-fluid' : 'fadeOut rounded'}
                 />
             }
 
