@@ -10,7 +10,7 @@ const NavbarSLO = (props) => {
 
     return <>
         <Navbar expand="lg" className="sticky-top" bg="dark">
-        <Container fluid className='py-1'>
+        <Container fluid className='py-3'>
 
         {title === "Info" &&
             <Col xs={8} className="mr-4 p-0">
