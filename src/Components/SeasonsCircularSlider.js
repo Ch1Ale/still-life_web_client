@@ -10,7 +10,7 @@ class SeasonCircularSlider extends React.Component {
 
     render(){
         return <>
-        <Card className="text-white mx-auto" style={{ width: '20rem' }}>
+        <Card className="text-white mx-auto" style={{ width: '19rem' }}>
 
             {   //spring
                 <Card.Img as={Image} src={this.props.springImg} alt="Spring image"
@@ -33,16 +33,17 @@ class SeasonCircularSlider extends React.Component {
                 />
             }
 
-            <Card.ImgOverlay className='p-0 m-0 mt-3'>
+            <Card.ImgOverlay className='p-0 m-0 mt-2 pt-1'>
             <CircularSlider
                 max={359}
-                knobColor="#005a58"
+                knobColor="#282828"
                 progressColorFrom="#00bfbd"
                 progressColorTo="#009c9a"
                 progressSize={22}
                 trackColor="#eeeeee"
                 trackSize={22}
                 label=""
+                valueFontSize={0}
                 onChange={ (value) => {this.props.sendSeason(value) } }
             />
             </Card.ImgOverlay>

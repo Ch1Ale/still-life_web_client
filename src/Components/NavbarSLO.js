@@ -13,7 +13,7 @@ const NavbarSLO = (props) => {
     let {title, toBack} = props;
 
     return <>
-        <Navbar expand="lg" className="sticky-top" bg="dark">
+        <Navbar expand="lg" className="sticky-top p-0" bg="dark">
             <Container fluid className='py-2'>
                 
             {title === "Info" &&

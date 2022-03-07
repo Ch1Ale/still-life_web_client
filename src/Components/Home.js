@@ -5,12 +5,11 @@ import { Container, Button, Row, Col, Card} from 'react-bootstrap';
 
 import NavbarSLO from './NavbarSLO'
 import API from "../API/API"
-import SlideShow from './SlideShow';
 import EmoticonsSlides from './EmoticonsSlides';
 import SeasonsCircularSlider from './SeasonsCircularSlider';
 
 const springImgUri = require('../Images/rovshan-allahverdiyev-WyZ7JykyU4c-unsplash.jpg')
-const summerImgUri = require('../Images/bill-hamway-m9ruwyhzYlE-unsplash.jpg')
+const summerImgUri = require('../Images/angello-pro-UljbyG2UcVI-unsplash.jpg')
 const autumnImgUri = require('../Images/sen-lee-zMAIgZkjj7Q-unsplash.jpg')
 const winterImgUri = require('../Images/christian-holzinger-wv1R7-gXcBk-unsplash.jpg')
 
@@ -21,7 +20,7 @@ class Home extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            mood: 0, /* 0 smile, 1 surprise, 2 frown, 3 sad */
+            mood: 0, /* 0 felice, 1 rilassato, 2 triste, 3 arrabiato */
             season: 0, /* 0:89 spring, 90:179 summer, 180:269 autumn, 270:360 winter */
             connected: null,
             remoteOscIp: null,
@@ -122,23 +121,23 @@ class Home extends React.Component {
 
         if(v <= 89){    //spring
             baseHue = 324
-            baseSaturation = 96
+            baseSaturation = 90
             scalingFactor = 1
         }
         if(v >= 90 && v <= 179){    //summer
-            baseHue = 54
-            baseSaturation = 100
-            scalingFactor = 1.8
+            baseHue = 45
+            baseSaturation = 95
+            scalingFactor = 1.9
         }
         if(v >= 180 && v <= 269){   //autumn
             baseHue = 19
-            baseSaturation = 96
-            scalingFactor = 1
+            baseSaturation = 90
+            scalingFactor = 1.5
         }
         if(v >= 270 && v <= 359){   //winter
-            baseHue = 195
-            baseSaturation = 91
-            scalingFactor = 1.6
+            baseHue = 185
+            baseSaturation = 85
+            scalingFactor = 1.8
         }
 
 /*         saturationDecrease = 0;
@@ -161,7 +160,7 @@ class Home extends React.Component {
 
         console.log('SAT decrease: '+saturationDecrease) */
 
-        return this.hslToHex(baseHue, baseSaturation, 96 - (this.seasonValueScaler(this.state.season) * scalingFactor ))
+        return this.hslToHex(baseHue, baseSaturation, 90 - (this.seasonValueScaler(this.state.season) * scalingFactor ))
     } 
       
 
@@ -170,20 +169,22 @@ class Home extends React.Component {
         <Switch>
             <Route exact path='/home'>
                 <NavbarSLO title="Still Life Orchestra"/>
-                <Container style={{backgroundColor: this.state.seasonBG, height: '100vh'}} className='pt-4 pb-5 fluid' >
+                <Container style={{height: '100vh'}} className='pt-2 pb-5 bg-light' >
 
-                    <h5 className='mb-3 py-0 mb-0'>Change the mood of plants</h5>
-                    {/* <SlideShow/> */}
-                    <SeasonsCircularSlider selectedSeason={this.state.season} sendSeason={this.sendSeason}
+                    <Card style={{backgroundColor: this.state.seasonBG }} className='pb-4 mt-2'>
+                        <h5 className='mb-2 py-0 mb-0 mt-2'>
+                            Change the mood of plants
+                        </h5>
+                        <SeasonsCircularSlider selectedSeason={this.state.season} sendSeason={this.sendSeason}
                                         springImg={this.state.springImg} summerImg={this.state.summerImg}
                                         autumnImg={this.state.autumnImg} winterImg={this.state.winterImg}
-                    />
+                        />
+                    </Card>
 
-                <Card className='py-2 mx-3 mt-4 pb-4 bg-light' style={{ opacity: 1}}>
-                    <h5 className='mt-0 mb-3 pb-0 mb-0'>Live your mood</h5>
-                    <EmoticonsSlides selectedMood={this.state.mood} sendMood={this.sendMood}/>
-                </Card>
-
+                    <Container className='mt-3 pb-4 bg-light'>
+                            <h5 className='mt-0 mb-2 pb-0 mb-0'>Live your mood</h5>
+                            <EmoticonsSlides selectedMood={this.state.mood} sendMood={this.sendMood}/>
+                    </Container>
                 </Container>
              </Route>
         </Switch>
