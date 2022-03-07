@@ -11,45 +11,45 @@ class EmoticonsSlides extends React.Component {
 
     render(){
         return <>
-        <div className="btn-group btn-group-toggle mt-0" data-toggle="buttons">
+        <div className="btn-group btn-group-toggle mt-0 px-0" data-toggle="buttons">
 
             {this.props.selectedMood !== null && this.props.selectedMood === 0 ?
-                <button className="btn btn-secondary">
-                    <FontAwesomeIcon icon={faFaceGrin} className="fa2x"/>
+                <button className="btn btn-dark px-3">
+                    <FontAwesomeIcon icon={faFaceGrin} className="fa-2x"/>
                 </button>
             :
-                <button className="btn btn-outline-dark" onClick={() => { this.props.sendMood(0) }} >
-                    <FontAwesomeIcon icon={faFaceGrin} className="fa2x"/>
+                <button className="btn px-3" onClick={() => { this.props.sendMood(0) }} >
+                    <FontAwesomeIcon icon={faFaceGrin} className="fa-2x"/>
                 </button>
             }
 
             {this.props.selectedMood && this.props.selectedMood === 1 ?
-                <button className="btn btn-secondary">
-                    <FontAwesomeIcon icon={faFaceSurprise} className="fa2x"/>
+                <button className="btn btn-dark px-3">
+                    <FontAwesomeIcon icon={faFaceSurprise} className="fa-2x"/>
                 </button>
             :
-                <button className="btn btn-outline-dark" onClick={() => { this.props.sendMood(1) }} >
-                    <FontAwesomeIcon icon={faFaceSurprise} className="fa2x"/>
+                <button className="btn px-3" onClick={() => { this.props.sendMood(1) }} >
+                    <FontAwesomeIcon icon={faFaceSurprise} className="fa-2x"/>
                 </button>
             }
 
             {this.props.selectedMood && this.props.selectedMood === 2 ?
-                <button className="btn btn-secondary">
-                    <FontAwesomeIcon icon={faFaceFrown} className="fa2x"/>
+                <button className="btn btn-dark px-3">
+                    <FontAwesomeIcon icon={faFaceFrown} className="fa-2x"/>
                 </button>
             :
-                <button className="btn btn-outline-dark" onClick={() => { this.props.sendMood(2) }} >
-                    <FontAwesomeIcon icon={faFaceFrown} className="fa2x"/>
+                <button className="btn px-3" onClick={() => { this.props.sendMood(2) }} >
+                    <FontAwesomeIcon icon={faFaceFrown} className="fa-2x"/>
                 </button>
             }     
 
             {this.props.selectedMood && this.props.selectedMood === 3 ?
-                <button className="btn btn-secondary">
-                    <FontAwesomeIcon icon={faFaceSadCry} className="fa2x"/>
+                <button className="btn btn-dark px-3">
+                    <FontAwesomeIcon icon={faFaceSadCry} className="fa-2x"/>
                 </button>
             :
-                <button className="btn btn-outline-dark" onClick={() => { this.props.sendMood(3) }} >
-                    <FontAwesomeIcon icon={faFaceSurprise} className="fa2x"/>
+                <button className="btn px-3" onClick={() => { this.props.sendMood(3) }} >
+                    <FontAwesomeIcon icon={faFaceSadCry} className="fa-2x"/>
                 </button>
             }      
 </div>

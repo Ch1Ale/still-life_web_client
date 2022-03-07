@@ -12,7 +12,7 @@ class Info extends React.Component {
     <Switch>
         <Route>
         <NavbarSLO title="Info" toBack={true} goback={null}/>
-        <Container>
+        <Container className='pt-3'>
             <h2>We are Still Life Orchestra</h2>
             <h3 className="mt-5 p-0 mx-auto">Using this app you can interract with the installation changing the mood...</h3>
         </Container>

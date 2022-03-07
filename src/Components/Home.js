@@ -126,7 +126,7 @@ class Home extends React.Component {
         <Switch>
             <Route exact path='/home'>
                 <NavbarSLO title="Still Life Orchestra"/>
-                <Container style={{backgroundColor: this.state.seasonBG}} className='pt-5 pb-5' >
+                <Container style={{backgroundColor: this.state.seasonBG, height: '100vh'}} className='pt-4 pb-5 fluid' >
 
                     <h5 className='mb-3 py-0 mb-0'>Change the mood of plants</h5>
                     {/* <SlideShow/> */}
@@ -134,7 +134,7 @@ class Home extends React.Component {
                                         springImg={this.state.springImg} summerImg={this.state.summerImg}
                     />
 
-                <Card className='p-3 px-4 mx-3 mt-3 pb-4' style={{backgroundColor: '#ffffff', opacity: 1}}>
+                <Card className='py-2 mx-3 mt-4 pb-4 bg-light' style={{ opacity: 1}}>
                     <h5 className='mt-0 mb-3 pb-0 mb-0'>Live your mood</h5>
                     <EmoticonsSlides selectedMood={this.state.mood} sendMood={this.sendMood}/>
                 </Card>
