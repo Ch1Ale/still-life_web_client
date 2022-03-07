@@ -11,8 +11,8 @@ import SeasonsCircularSlider from './SeasonsCircularSlider';
 
 const springImgUri = require('../Images/rovshan-allahverdiyev-WyZ7JykyU4c-unsplash.jpg')
 const summerImgUri = require('../Images/bill-hamway-m9ruwyhzYlE-unsplash.jpg')
-const autumnImgUri = require('../Images/kiyomi-shiomura-RgYIxvBLnKc-unsplash.jpg')
-const winterImgUri = require('../Images/kiyomi-shiomura-RgYIxvBLnKc-unsplash.jpg')
+const autumnImgUri = require('../Images/sen-lee-zMAIgZkjj7Q-unsplash.jpg')
+const winterImgUri = require('../Images/christian-holzinger-wv1R7-gXcBk-unsplash.jpg')
 
 let baseSpringBG = "#fad1ea" // 324, 80, 85
   
@@ -37,7 +37,9 @@ class Home extends React.Component {
         this.setState({
             seasonBG: this.hslToHex(324, 80, 96),
             springImg: springImgUri,
-            summerImg: summerImgUri
+            summerImg: summerImgUri,
+            autumnImg: autumnImgUri,
+            winterImg: winterImgUri
         })
     }
 
@@ -91,11 +93,32 @@ class Home extends React.Component {
         return res
     }
 
+    saturationValueScaler = (v) => {
+        // 0-89 90-179 x:90 = 1:10
+        let res
+
+        v++
+        if(v> 94) v-=85
+        if(v> 184) v-=175
+        if(v> 274) v-=265
+        // v %= 85
+        // v /= 10
+        // res = v * 90
+        // res = v % 10
+
+        console.log("SCALED "+v)
+        return res
+    }
+
     seasonBgColorSel = (v) => {
 
         let baseHue
         let baseSaturation
+        let saturationDecrease
         let scalingFactor
+
+        //aggiungere sfumatura biaco tra passaggi di colori
+        // scelgo i range a cavallo tra i colori
 
         if(v <= 89){    //spring
             baseHue = 324
@@ -117,6 +140,27 @@ class Home extends React.Component {
             baseSaturation = 91
             scalingFactor = 1.6
         }
+
+/*         saturationDecrease = 0;
+
+        if( v>=85 && v<=94){
+            saturationDecrease = this.saturationValueScaler(v) * 9
+        }
+
+        if(v>=175 && v<= 184){
+            saturationDecrease = this.saturationValueScaler(v) * 10
+        }
+
+        if(v>=265 && v<=274){
+            saturationDecrease = this.saturationValueScaler(v) * 10
+        }
+
+        if(v>= 355 && v<= 4){
+            saturationDecrease = this.saturationValueScaler(v) * 10
+        }
+
+        console.log('SAT decrease: '+saturationDecrease) */
+
         return this.hslToHex(baseHue, baseSaturation, 96 - (this.seasonValueScaler(this.state.season) * scalingFactor ))
     } 
       
@@ -132,6 +176,7 @@ class Home extends React.Component {
                     {/* <SlideShow/> */}
                     <SeasonsCircularSlider selectedSeason={this.state.season} sendSeason={this.sendSeason}
                                         springImg={this.state.springImg} summerImg={this.state.summerImg}
+                                        autumnImg={this.state.autumnImg} winterImg={this.state.winterImg}
                     />
 
                 <Card className='py-2 mx-3 mt-4 pb-4 bg-light' style={{ opacity: 1}}>

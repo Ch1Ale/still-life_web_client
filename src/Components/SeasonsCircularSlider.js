@@ -23,12 +23,12 @@ class SeasonCircularSlider extends React.Component {
                 />
             }
             {   //autumn
-                <Card.Img as={Image} src="https://images.unsplash.com/photo-1632177979664-c1bec4eac89f" alt="Autumn image"
+                <Card.Img as={Image} src={this.props.autumnImg}alt="Autumn image"
                     className={(this.props.selectedSeason >=180 && this.props.selectedSeason <=269) ? 'fadeIn rounded img-fluid' : 'fadeOut rounded' }
                 />
             }
             { //winter
-                <Card.Img as={Image} src="https://images.unsplash.com/photo-1514665840819-e04ee0e24d88" alt="Winter image"
+                <Card.Img as={Image} src={this.props.winterImg} alt="Winter image"
                     className={(this.props.selectedSeason >=270 && this.props.selectedSeason <=359) ? 'fadeIn rounded img-fluid' : 'fadeOut rounded'}
                 />
             }
