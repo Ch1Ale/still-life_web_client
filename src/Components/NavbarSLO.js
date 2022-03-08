@@ -15,18 +15,18 @@ const NavbarSLO = (props) => {
     return <>
         <Navbar expand="lg" className="sticky-top p-0" bg="dark">
             <Container fluid className='py-2'>
-                
-            {title === "Info" &&
-                <Col xs={8} className="mr-4 p-0">
-                    <h4 className="tilte-info text-light my-auto">{title}</h4>
-                </Col>
-            }
 
             { toBack &&
-                <Col xs={{ span: 2}} className="p-0">
+                <Col xs={{ span: 2}} className="p-0 py-3">
                     <Link type="button" className="btn text-light px-1 py-2" to="/home" > 
                         <FontAwesomeIcon icon={faCircleLeft} style={{width: '23px'}} className='fa-2x'/>
                     </Link>
+                </Col>
+            }
+                
+            {title === "Help" &&
+                <Col xs={8} className="text-start ml-0 p-0">
+                    <h3 className="tilte-info text-light my-auto">{title}</h3>
                 </Col>
             }
 
@@ -37,10 +37,6 @@ const NavbarSLO = (props) => {
                 <div className='m-0 p-0'/>
                 <div className='m-0 p-0'/>
                 <div className='m-0 p-0'/>
-
-                {/* <Col xs={8} className="pl-4 p-0">
-                    <h3 className="tilte-info text-light my-auto">{title}</h3>
-                </Col> */}
 
                 <Col className='' xs={{ span: 2}}>
                     <Link type="button" className="btn px-3 text-light" to="/info"> 

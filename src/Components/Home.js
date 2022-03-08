@@ -8,10 +8,10 @@ import API from "../API/API"
 import EmoticonsSlides from './EmoticonsSlides';
 import SeasonsCircularSlider from './SeasonsCircularSlider';
 
-const springImgUri = require('../Images/rovshan-allahverdiyev-WyZ7JykyU4c-unsplash.jpg')
-const summerImgUri = require('../Images/angello-pro-UljbyG2UcVI-unsplash.jpg')
-const autumnImgUri = require('../Images/sen-lee-zMAIgZkjj7Q-unsplash.jpg')
-const winterImgUri = require('../Images/christian-holzinger-wv1R7-gXcBk-unsplash.jpg')
+const springImgUri = require('../Images/spring_segnata.jpg')
+const summerImgUri = require('../Images/summer_segnata.jpg')
+const autumnImgUri = require('../Images/autumn_segnata.jpg')
+const winterImgUri = require('../Images/winter_segnata.jpg')
 
 let baseSpringBG = "#fad1ea" // 324, 80, 85
   
@@ -28,7 +28,8 @@ class Home extends React.Component {
             springImg: null,
             seasonBG: null,
             summerImg: null,
-            summerBG: null
+            summerBG: null,
+            seasonName: null
         }
     }
 
@@ -38,7 +39,8 @@ class Home extends React.Component {
             springImg: springImgUri,
             summerImg: summerImgUri,
             autumnImg: autumnImgUri,
-            winterImg: winterImgUri
+            winterImg: winterImgUri,
+            seasonName: 'spring'
         })
     }
 
@@ -60,7 +62,8 @@ class Home extends React.Component {
 
     sendSeason = (value) => {
         this.setState({season: value, 
-                      seasonBG: this.seasonBgColorSel(value)
+                      seasonBG: this.seasonBgColorAndNameSel(value, null),
+                      seasonName: this.seasonBgColorAndNameSel(value, 'name')
             }, () => {
                 API.sendNewSeason(value)
                 //console.log("BBGG : "+this.state.seasonBG)
@@ -109,7 +112,7 @@ class Home extends React.Component {
         return res
     }
 
-    seasonBgColorSel = (v) => {
+    seasonBgColorAndNameSel = (v, mode) => {
 
         let baseHue
         let baseSaturation
@@ -120,24 +123,40 @@ class Home extends React.Component {
         // scelgo i range a cavallo tra i colori
 
         if(v <= 89){    //spring
-            baseHue = 324
-            baseSaturation = 90
-            scalingFactor = 1
+            if(mode === 'name')
+                return 'spring'
+            else{
+                baseHue = 324
+                baseSaturation = 90
+                scalingFactor = 1
+            }
         }
-        if(v >= 90 && v <= 179){    //summer
-            baseHue = 45
-            baseSaturation = 95
-            scalingFactor = 1.9
+        if(v >= 90 && v <= 179){    //summe
+            if(mode === 'name') 
+                return 'summer'
+            else{
+                baseHue = 45
+                baseSaturation = 95
+                scalingFactor = 1.9
+            }
         }
         if(v >= 180 && v <= 269){   //autumn
-            baseHue = 19
-            baseSaturation = 90
-            scalingFactor = 1.5
+            if(mode === 'name')
+                return 'autumn'
+            else{
+                baseHue = 19
+                baseSaturation = 90
+                scalingFactor = 1.5  
+            }
         }
         if(v >= 270 && v <= 359){   //winter
-            baseHue = 185
-            baseSaturation = 85
-            scalingFactor = 1.8
+            if(mode === 'name')
+                return 'winter'
+            else{
+                baseHue = 185
+                baseSaturation = 85
+                scalingFactor = 1.8
+            }
         }
 
 /*         saturationDecrease = 0;
@@ -182,7 +201,7 @@ class Home extends React.Component {
                     </Card>
 
                     <Container className='mt-3 pb-4 bg-light'>
-                            <h5 className='mt-0 mb-2 pb-0 mb-0'>Live your mood</h5>
+                            <h5 className='mt-0 mb-2 pb-0 mb-0'>{'How do you feel in '+this.state.seasonName+'?'} </h5>
                             <EmoticonsSlides selectedMood={this.state.mood} sendMood={this.sendMood}/>
                     </Container>
                 </Container>
