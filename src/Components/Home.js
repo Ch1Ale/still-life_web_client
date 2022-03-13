@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Switch, Route, withRouter } from 'react-router-dom';
-import { Container, Button, Row, Col, Card} from 'react-bootstrap';
+import { Container, Card} from 'react-bootstrap';
 
 import NavbarSLO from './NavbarSLO'
 import API from "../API/API"
@@ -44,16 +44,6 @@ class Home extends React.Component {
         })
     }
 
-    componentDidUpdate(prevProps){
-        if (this.props && this.props.songs
-            && prevProps.season !== this.props.season)
-            {
-                /* this.setState({
-                    springBG: this.hslToHex(324, 80, 96-this.seasonValueScaler(this.state.season))
-                }) */
-            }
-    }
-
     sendMood = (value) => {
         this.setState({mood: value}, () => {
             API.sendNewMood(value);
@@ -82,7 +72,6 @@ class Home extends React.Component {
     }
 
     seasonValueScaler = (v) => {
-        // 0-89 90-179 x:90 = 1:10
         let res
 
         v++
@@ -95,32 +84,12 @@ class Home extends React.Component {
         return res
     }
 
-    saturationValueScaler = (v) => {
-        // 0-89 90-179 x:90 = 1:10
-        let res
-
-        v++
-        if(v> 94) v-=85
-        if(v> 184) v-=175
-        if(v> 274) v-=265
-        // v %= 85
-        // v /= 10
-        // res = v * 90
-        // res = v % 10
-
-        console.log("SCALED "+v)
-        return res
-    }
-
     seasonBgColorAndNameSel = (v, mode) => {
 
         let baseHue
         let baseSaturation
         let saturationDecrease
         let scalingFactor
-
-        //aggiungere sfumatura biaco tra passaggi di colori
-        // scelgo i range a cavallo tra i colori
 
         if(v <= 89){    //spring
             if(mode === 'name')
@@ -158,26 +127,6 @@ class Home extends React.Component {
                 scalingFactor = 1.8
             }
         }
-
-/*         saturationDecrease = 0;
-
-        if( v>=85 && v<=94){
-            saturationDecrease = this.saturationValueScaler(v) * 9
-        }
-
-        if(v>=175 && v<= 184){
-            saturationDecrease = this.saturationValueScaler(v) * 10
-        }
-
-        if(v>=265 && v<=274){
-            saturationDecrease = this.saturationValueScaler(v) * 10
-        }
-
-        if(v>= 355 && v<= 4){
-            saturationDecrease = this.saturationValueScaler(v) * 10
-        }
-
-        console.log('SAT decrease: '+saturationDecrease) */
 
         return this.hslToHex(baseHue, baseSaturation, 90 - (this.seasonValueScaler(this.state.season) * scalingFactor ))
     } 
